@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shua & kingsley's</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="app">
+    <header class="navbar">
+            <h1 class="logo">E-<span>Comm</span></h1>
+   <ul class="nav-menu">
+    <li>Shop <hr/> </li>
+    <li>Men</li>
+    <li>Women</li>
+    <li>Kids</li>
+   </ul>
+    <nav class="nav-login-cart">
+        <button>Login</button>
+        <a href="../e-comm/ cart.html">
+            <img src="/e-comm/images/basket_icon.png" alt="">
+        </a>
+        
+        <div class="nav-cart-count">
+            0
+        </div>
+    </nav>
+    </header>
+
+    <section class="hero">
+       
+        <div class="hero-left">
+            <p>Our Bestsellers</p>
+           <h2>LATEST ARRIVALS</h2>
+           
+           <div>
+          
+           <div class="hero-latest-btn">
+            <button>
+                Shop Now
+            </button>
+           
+            <img src="" alt="">
+           </div>
+        </div>
+        </div>
+
+        <div class="hero-right">
+             
+        </div>
+
+    </section>
+
+
+    <section class="popular">
+        <h1>SOME PRODUCTS</h1>
+        <hr />
+        <div class="item"> 
+            <img src="{{ upload.image }}" alt="">
+            <p>{{ upload.title }}</p>
+            <div class="item-price">
+                <p>${{ upload.price }}</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="offers">
+        <div class="offers-left">
+            <h1>Exclusive Offers For You</h1>
+            <p>ONLY ON BEST SELLERS PRODUCTS</p>
+            <button>CHECK NOW</button>
+        </div>
+
+        <div class="offers-right">
+            <img src="./images/anthony-le-c3gpaoFiv6s-unsplash-removebg-preview.png" alt="">
+        </div>
+    </section>
+
+    <section class="new-collections">
+        <h1>NEW COLLECTIONS</h1>
+        <hr />
+        <div class="collections">
+            <img src="{{ upload.image }}" alt="">
+            <p>{{ upload.title }}</p>
+            <div class="item-price">
+                <p>${{ upload.price }}</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <h1>Get Exclusive Offers On Your Email</h1>
+        <p>Subscribe to our newsletter and stay updated</p>
+        <div>
+            <input type="email" name="" placeholder="Your Email Address" id="">
+            <button>Subscribe</button>
+        </div>
+    </section>
+
+    
+    <footer class='footer' id='footer'>
+        <div class="footer-content">
+          <div class="footer-content-left">
+            <h1 class="logo">E-<span>Comm</span></h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt at in doloremque iste aliquid. Fugiat, nam. Provident expedita, fuga minima, ut pariatur perferendis soluta qui quisquam et nihil, similique consectetur.</p>
+              <div class="footer-social-icons">
+              <img src={assets.facebook_icon} alt="" />
+              <img src={assets.twitter_icon} alt="" />
+              <img src={assets.linkedin_icon} alt="" />
+              </div>
+          </div>
+          <div class="footer-content-center">
+              <h2>COMPANY</h2>
+              <ul>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
+              </ul>
+          </div>
+          <div class="footer-content-right">
+              <h2>GET IN TOUCH</h2>
+              <ul>
+                  <li>+234-911-835-3135</li>
+                  <li>contact@Olomoshuaomozafen@gmail.com</li>
+              </ul>
+          </div>
+          
+  
+        </div>
+        <hr />
+        <p class="footer-copyright">Copyright 2024 E-comm.com - All Right Reserved</p>
+    </footer>
+    
+</body>
+</html>

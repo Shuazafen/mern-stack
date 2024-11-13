@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shua & kingsley's</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="app">
+    <header class="navbar">
+            <h1 class="logo">E-<span>Comm</span></h1>
+   <ul class="nav-menu">
+    <li>Shop <hr/> </li>
+    <li>Men</li>
+    <li>Women</li>
+    <li>Kids</li>
+   </ul>
+    <nav class="nav-login-cart">
+        <button>Login</button>
+        <img src="/e-comm/images/basket_icon.png" alt="">
+        <div class="nav-cart-count">
+            0
+        </div>
+    </nav>
+    </header>
+
+    <section class='cart'>
+        <div class="cart-items">
+          <div class="cart-items-title">
+            <p>Items</p>
+            <p>Title</p>
+            <p>Price</p>
+            <p>Quantity</p>
+            <p>Total</p>
+            <p>Remove</p>
+          </div>
+          <br/>
+          <hr/>
+        
+            
+                
+                  <div>
+                         <div class="cart-items-title cart-items-item">
+                    <img src={update.image} alt="" />
+                    <p>{update.name}</p>
+                    <p>${update.price}</p>
+                    <p>{counter[update._id]}</p>
+                    <p>${update.price*counter[update._id]}</p>
+                    <p class='cross'>x</p>
+                  </div>
+                  <hr/>
+                  </div>
+                
+                
+        
+        
+        </div>
+        
+        <div class="cart-bottom">
+          <div class="cart-total">
+            <h2>Cart Totals</h2>
+            <div>
+            <div class="cart-total-details">
+              <p>Subtotal</p>
+              <p>${getTotalCartAmount()}</p>
+            </div>
+            <hr/>
+            <div class="cart-total-details">
+              <p>Delivery Fee</p>
+              <p>${getTotalCartAmount()===0?0:2}</p>
+            </div>
+            <hr/>
+            <div class="cart-total-details">
+              <b>Total</b>
+              <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+            </div>
+            <button>PROCEED TO CHECKOUT</button>
+            </div>
+            
+          </div>
+              
+          <div class="cart-promocode">
+              <div>
+                <p>if you have a promo code, Enter it here</p>
+                <div class="cart-promocode-input">
+                  <input type="text" placeholder='promo code'/>
+                  <button>Submit</button>
+                </div>
+              </div>
+            </div>
+  
+        </div>
+    </section>
+
+
+
+    <footer class='footer' id='footer'>
+        <div class="footer-content">
+          <div class="footer-content-left">
+            <h1 class="logo">E-<span>Comm</span></h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt at in doloremque iste aliquid. Fugiat, nam. Provident expedita, fuga minima, ut pariatur perferendis soluta qui quisquam et nihil, similique consectetur.</p>
+              <div class="footer-social-icons">
+              <img src="" alt="" />
+              <img src="" alt="" />
+              <img src="" alt="" />
+              </div>
+          </div>
+          <div class="footer-content-center">
+              <h2>COMPANY</h2>
+              <ul>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
+              </ul>
+          </div>
+          <div class="footer-content-right">
+              <h2>GET IN TOUCH</h2>
+              <ul>
+                  <li>+234-911-835-3135</li>
+                  <li>contact@Olomoshuaomozafen@gmail.com</li>
+              </ul>
+          </div>
+          
+  
+        </div>
+        <hr />
+        <p class="footer-copyright">Copyright 2024 E-comm.com - All Right Reserved</p>
+    </footer>
+    
+</body>
