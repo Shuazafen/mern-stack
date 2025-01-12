@@ -62,7 +62,7 @@ const registerUser = async (req,res) => {
 
   } catch (error) {
      console.log(error);
-     res.json({success:false,message:"Error"})  // Error handling here  //? 
+     res.json({success:false,message:"Error"})  // Error handling here  // 
   }
 }
 
