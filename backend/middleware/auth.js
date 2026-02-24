@@ -1,17 +1,17 @@
 import jwt from "jsonwebtoken";
 
-const authMiddleware = async (req,res,next) => {
-    const {token} = req.headers;
+const authMiddleware = async (req, res, next) => {
+    const { token } = req.headers;
     if (!token) {
-        return res.json({success:false,message:"Not Authorized"})
+        return res.json({ success: false, message: "Not Authorized" })
     }
-    try{
+    try {
         const token_decode = jwt.verify(token, process.env.JWT_SECRET);
-        req.body.userid = token_decode.id;
+        req.body.userId = token_decode.id;
         next();
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"})    
+        res.json({ success: false, message: "Error" })
     }
 }
 
