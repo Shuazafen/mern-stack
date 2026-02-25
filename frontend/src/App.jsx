@@ -6,7 +6,7 @@ import Cart from './pages/Cart/Cart'
 import Placeorder from './pages/Placeorder/Placeorder'
 import Footer from './components/Footer/Footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
-import Verify from './pages/verify/verify'
+import Verify from './pages/Verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
