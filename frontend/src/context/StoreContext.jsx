@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 
 export const StoreContext = createContext(null);
@@ -11,6 +12,10 @@ const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState([])
 
   const addToCart = async (itemId) => {
+    if (!token) {
+      toast.error("Login first")
+      return
+    }
     if (!cartItems[itemId]) {
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
     } else {
