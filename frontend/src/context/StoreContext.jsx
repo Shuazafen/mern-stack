@@ -38,20 +38,32 @@ const StoreContextProvider = (props) => {
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = food_list.find((product) => product._id === item);
-        totalAmount += itemInfo.price * cartItems[item];
+        if (itemInfo) {
+          totalAmount += itemInfo.price * cartItems[item];
+        }
       }
     }
     return totalAmount;
   }
 
   const fetchFoodList = async () => {
-    const response = await axios.get(url + "/api/food/list")
-    setFoodList(response.data.data)
+    try {
+      const response = await axios.get(url + "/api/food/list")
+      setFoodList(response.data.data)
+    } catch (error) {
+      console.error("Error fetching food list:", error);
+      toast.error("Failed to load food items");
+    }
   }
 
   const loadCartData = async (token) => {
-    const response = await axios.post(url + "/api/cart/get", {}, { headers: { token } });
-    setCartItems(response.data.cartData);
+    try {
+      const response = await axios.post(url + "/api/cart/get", {}, { headers: { token } });
+      setCartItems(response.data.cartData || {});
+    } catch (error) {
+      console.error("Error loading cart data:", error);
+      toast.error("Failed to load cart");
+    }
   }
 
   useEffect(() => {
