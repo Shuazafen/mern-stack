@@ -7,27 +7,35 @@ import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 
-
 const app = express()
-const port = 4000
+const port = process.env.PORT || 4000  // Use Vercel's PORT or fallback to 4000
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://your-frontend.vercel.app'], // Add your frontend URL
+    credentials: true
+}))
 
+// Connect to database (this will run on serverless functions)
 connectDB();
 
+// Routes
 app.use("/api/food", foodRouter)
 app.use("/images", express.static('uploads'))
 app.use("/api/user", userRouter)
 app.use("/api/cart", cartRouter)
 app.use("/api/order", orderRouter)
 
-
+// Health check route
 app.get("/", (req, res) => {
-    res.send("API Working")
+    res.json({ 
+        message: "API Working",
+        environment: process.env.NODE_ENV || 'development'
+    })
 })
 
-if (!process.env.VERCEL) {
+// Only listen when running locally (not on Vercel)
+if (process.env.NODE_ENV !== 'production') {
     app.listen(port, () => {
         console.log(`Server Started on http://localhost:${port}`)
     })
