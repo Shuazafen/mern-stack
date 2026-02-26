@@ -11,10 +11,7 @@ const app = express()
 const port = process.env.PORT || 4000  // Use Vercel's PORT or fallback to 4000
 
 app.use(express.json())
-app.use(cors({
-    origin: ['http://localhost:3000', 'https://your-frontend.vercel.app'], // Add your frontend URL
-    credentials: true
-}))
+app.use(cors())
 
 // Connect to database (this will run on serverless functions)
 connectDB();
@@ -28,7 +25,7 @@ app.use("/api/order", orderRouter)
 
 // Health check route
 app.get("/", (req, res) => {
-    res.json({ 
+    res.json({
         message: "API Working",
         environment: process.env.NODE_ENV || 'development'
     })
