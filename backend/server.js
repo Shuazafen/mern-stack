@@ -11,7 +11,20 @@ const app = express()
 const port = process.env.PORT || 4000  // Use Vercel's PORT or fallback to 4000
 
 app.use(express.json())
-app.use(cors())
+
+// Updated CORS configuration
+app.use(cors({
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:5173', // If using Vite
+        'https://mern-stack-6f5l.vercel.app',
+        'https://mern-stack-6f5l.vercel.app/' // With trailing slash (just in case)
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
+    credentials: true,
+    optionsSuccessStatus: 200
+}));
 
 // Connect to database (this will run on serverless functions)
 connectDB();

@@ -4,7 +4,7 @@ import Stripe from "stripe"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
-const frontend_url = "https://mern-stack-chi-cyan.vercel.app"
+const frontend_url = "https://mern-stack-6f5l.vercel.app"
 
 
 // placing user order for frontend

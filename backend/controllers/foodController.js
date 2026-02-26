@@ -2,47 +2,48 @@ import foodModel from "../models/foodModel.js";
 import fs from 'fs'
 
 
-const addFood = async (req,res) => {
-  
-    let image_filename = `${req.file.filename}`
+const addFood = async (req, res) => {
+
+    // When using Cloudinary storage, req.file.path is the Cloudinary secure URL
+    let image_url = req.file.path || req.file.filename
 
     const food = new foodModel({
-        name:req.body.name,
-        description:req.body.description,
-        price:req.body.price,
-        category:req.body.category,
-        image:image_filename
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        category: req.body.category,
+        image: image_url
     })
     try {
         await food.save();
-        res.json({success:true,message:"Food Added"})
+        res.json({ success: true, message: "Food Added" })
     } catch (error) {
         console.log(error)
-        res.json({success:false,message:"Error"})
+        res.json({ success: false, message: "Error" })
     }
 }
 
-const listFood = async (req,res) => {
-   try {
-     const foods = await foodModel.find({});
-     res.json({success:true,data:foods})
-   } catch (error) {
-    console.log(error);
-    res.json({success:false,message:"Error"})
-   }
-}
-
-const removeFood = async (req,res) => {
+const listFood = async (req, res) => {
     try {
-        const food = await foodModel.findById(req.body.id);
-        fs.unlink(`uploads/${food.image}`,()=>{})
-
-        await foodModel.findByIdAndDelete(req.body.id);
-        res.json({success:true,message:"Food Removed"})
+        const foods = await foodModel.find({});
+        res.json({ success: true, data: foods })
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"})
+        res.json({ success: false, message: "Error" })
     }
 }
 
-export {addFood,listFood,removeFood}
+const removeFood = async (req, res) => {
+    try {
+        const food = await foodModel.findById(req.body.id);
+        fs.unlink(`uploads/${food.image}`, () => { })
+
+        await foodModel.findByIdAndDelete(req.body.id);
+        res.json({ success: true, message: "Food Removed" })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" })
+    }
+}
+
+export { addFood, listFood, removeFood }
