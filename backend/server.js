@@ -8,47 +8,40 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 
 const app = express()
-const port = process.env.PORT || 4000  // Use Vercel's PORT or fallback to 4000
+const port = process.env.PORT || 4000
+
+// Simple CORS - allows all in development
+app.use(cors({
+    origin: true, // Allow all origins in development
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'token']
+}));
 
 app.use(express.json())
 
-// Updated CORS configuration
-app.use(cors({
-    origin: [
-        'http://localhost:3000',
-        'http://localhost:5173', // If using Vite
-        'https://mern-stack-6f5l.vercel.app',
-        'https://mern-stack-6f5l.vercel.app/' // With trailing slash (just in case)
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
-    credentials: true,
-    optionsSuccessStatus: 200
-}));
-
-// Connect to database (this will run on serverless functions)
+// Connect to database
 connectDB();
 
 // Routes
 app.use("/api/food", foodRouter)
-app.use("/images", express.static('uploads'))
 app.use("/api/user", userRouter)
 app.use("/api/cart", cartRouter)
 app.use("/api/order", orderRouter)
 
-// Health check route
+// Test route
 app.get("/", (req, res) => {
-    res.json({
-        message: "API Working",
+    res.json({ 
+        message: "API Working Locally!",
         environment: process.env.NODE_ENV || 'development'
     })
 })
 
-// Only listen when running locally (not on Vercel)
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(port, () => {
-        console.log(`Server Started on http://localhost:${port}`)
-    })
-}
+// ALWAYS listen - removed the condition!
+app.listen(port, () => {
+    console.log(`✅ Server Started on http://localhost:${port}`)
+    console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`)
+    console.log(`🔗 Test: http://localhost:${port}/`)
+})
 
 export default app;
